@@ -5,6 +5,10 @@
  * Image Section
  * Comment Section
  */
+
+import Content from "../subcomponents/ImageSection";
+import Counter from "../subcomponents/Counter";
+
 function Article () {
   return (
     <>
