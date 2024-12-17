@@ -10,11 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.4.0",
+    "@reduxjs/toolkit": "^2.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+<<<<<<< HEAD
     "react-redux": "^9.1.2",
     "reactstrap": "^9.2.3"
+=======
+    "react-redux": "^9.2.0"
+>>>>>>> ba5d1f18840b65bf912a85d2c2d2353ef6bbd726
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
