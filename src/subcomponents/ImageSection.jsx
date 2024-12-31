@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Carousel, CarouselItem } from "reactstrap";
+import { Carousel, CarouselItem } from 'reactstrap';
 
 function Content() {
     useEffect(() => {
