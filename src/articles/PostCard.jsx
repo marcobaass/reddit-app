@@ -1,13 +1,13 @@
 import { Card, CardImgOverlay, CardImg, CardTitle, CardBody, CardText, CardSubtitle } from "reactstrap";
 
-const ArticleCard = ({ article }) => {
-    const { image, title, description } = article;
+const PostCard = ({ post }) => {
+    const { image, title, description } = post;
     return (
     <Link to={id}>
         <Card>
         <CardTitle>{title}</CardTitle>
         <CardBody>
-        {/* Checks if an article has an image. */}
+        {/* Checks if post has an image. */}
         {image ? (
             <>
             <CardImg>{image}</CardImg>
@@ -22,4 +22,4 @@ const ArticleCard = ({ article }) => {
     )
 };
 
-export default ArticleCard;
+export default PostCard;

@@ -10,6 +10,7 @@ import Content from "../subcomponents/ImageSection";
 import Counter from "../subcomponents/Counter";
 
 function Article () {
+  
   return (
     <>
     <h3>Article Name</h3>
