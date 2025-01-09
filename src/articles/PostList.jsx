@@ -1,19 +1,19 @@
 import { useSelector } from "react-redux";
-import { selectAllArticles } from "./PostSlice";
+import { selectAllPosts } from "./PostSlice";
 import PostCard from "./PostCard";
 import { Col, Row } from "reactstrap";
 
 
 const PostList = () => {
-    const posts = useSelector(selectAllArticles);
-    console.log('pots: ', posts);
+    const posts = useSelector(selectAllPosts);
+    console.log('posts: ', posts);
 
     return (
         <Row>
             {posts.map((post) => {
                 return (
                     <Col
-                    key={post.id}
+                    key={post.url}
                     >
                         <PostCard post={post} />
                     </Col>

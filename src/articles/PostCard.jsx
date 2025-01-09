@@ -1,4 +1,4 @@
-import { Card, CardImgOverlay, CardImg, CardTitle, CardBody, CardText, CardSubtitle } from "reactstrap";
+import { Card, CardImg, CardTitle, CardBody, CardText, CardSubtitle } from "reactstrap";
 
 const PostCard = ({ post }) => {
     const { image, title, description } = post;
@@ -11,7 +11,7 @@ const PostCard = ({ post }) => {
         {image ? (
             <>
             <CardImg>{image}</CardImg>
-            <CardSubtitle>{description}</CardSubtitle>
+            <CardText>{description}</CardText>
             </>
         ) : (
            <CardText>{description}</CardText> 

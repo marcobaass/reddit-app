@@ -2,7 +2,7 @@
  *
  *  This will call the following components
  * Counter
- * Image Section
+ * PostList
  * Comment Section
  */
 
