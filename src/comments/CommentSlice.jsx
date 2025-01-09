@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { baseUrl } from "../shared/baseUrl";
+import { baseUrl } from "../../shared/baseUrl";
 
 
 const initialState = {
