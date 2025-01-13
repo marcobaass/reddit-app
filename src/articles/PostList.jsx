@@ -1,12 +1,20 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts } from "./PostSlice";
 import PostCard from "./PostCard";
 import { Col, Row } from "reactstrap";
-
+import { useEffect } from "react";
+import { fetchPopularPostsAsync } from "./PostSlice";
 
 const PostList = () => {
+    const dispatch = useDispatch()
     const posts = useSelector(selectAllPosts);
-    console.log('posts: ', posts);
+
+    useEffect(()=>{
+        dispatch(fetchPopularPostsAsync())
+    },[dispatch ])
+    if (posts.length === 0) {
+        return <p>No posts</p>
+    }
 
     return (
         <Row>
