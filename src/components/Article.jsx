@@ -1,21 +1,49 @@
 /**
  *
- *  This will call the following components
- * Counter
- * PostList
- * Comment Section
+ *  This will displayed the article information
  */
 
-import Content from "../subcomponents/ImageSection";
-import Counter from "../subcomponents/Counter";
+// import Content from "../subcomponents/ImageSection";
+import { Link } from "react-router-dom";
+import { Card, CardTitle, CardBody, CardText } from "reactstrap";
+import { getImageUrl, getDescription } from "../utils/helpers";
 
-function Article () {
-  
+import PropTypes from "prop-types";
+
+function Article({ post }) {
+  const { id, title } = post;
+  const description = getDescription(post);
+  const imageUrls = getImageUrl(post);
+
   return (
-    <>
-    <h3>Article Name</h3>
-    </>
-  )
+    <Link to={id} className="link-underline-light my-2">
+      <Card color="light" outline>
+        {imageUrls ? (
+          <img alt={description} src={imageUrls} className="img-thumbnail" />
+        ) : (
+          ""
+        )}
+        <CardTitle tag="h5" className="my-2">
+          {title}
+        </CardTitle>
+        <CardBody>
+          <CardText>
+            {description ? description : "Missing description"}
+          </CardText>
+        </CardBody>
+      </Card>
+    </Link>
+  );
 }
+
+Article.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    selftext: PropTypes.string,
+    post_hint: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
+};
 
 export default Article;
