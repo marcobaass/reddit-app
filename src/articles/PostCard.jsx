@@ -1,37 +1,37 @@
-import { Card, CardTitle, CardBody, CardText } from "reactstrap";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { getImageUrl, getDescription } from "../utils/helpers";
 
+import Article from "../components/Article";
+import CommentList from "../comments/CommentList";
+import Counter from "../subcomponents/Counter";
+import { Col, Container, Row } from "reactstrap";
+
+/**
+ * PostCard  includes
+ * Counter Component
+ * Article Component
+ * Comment Component
+ * @param {post} post
+ * @returns
+ */
 const PostCard = ({ post }) => {
-  const { id, title } = post;
-  const description = getDescription(post);
-  const imageUrls = getImageUrl(post);
-
+  // TODO Generate the comment list and pass it to CommentList component
   return (
-    <Link to={id} className="link-underline-light my-2">
-      <Card style={{}}>
-        {imageUrls ? (
-          <img alt={description} src={imageUrls} className="img-thumbnail" />
-        ) : (
-          ""
-        )}
-        <CardTitle tag="h5">{title}</CardTitle>
-        <CardBody>
-          <CardText> {description}</CardText>
-        </CardBody>
-      </Card>
-    </Link>
+    <Container className="border my-2 py-4">
+      <Row>
+        <Col xs="auto" lg="2">
+          <Counter />
+        </Col>
+        <Col>
+          <Article post={post} />
+        </Col>
+      </Row>
+      <CommentList />
+    </Container>
   );
 };
+
 PostCard.propTypes = {
-  post: PropTypes.shape({
-    id: PropTypes.string,
-    title: PropTypes.string,
-    selftext: PropTypes.string,
-    post_hint: PropTypes.string,
-    url: PropTypes.string,
-  }).isRequired,
+  post: PropTypes.object.isRequired,
 };
 
 export default PostCard;
