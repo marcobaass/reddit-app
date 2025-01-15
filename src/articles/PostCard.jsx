@@ -1,45 +1,37 @@
-import { Card,
-    // CardImg,
-    CardTitle, CardBody,
-    // CardText
-} from "reactstrap";
-import PropTypes from 'prop-types';
+import { Card, CardTitle, CardBody, CardText } from "reactstrap";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import { getImageUrl, getDescription } from "../utils/helpers";
 
 const PostCard = ({ post }) => {
-    console.log(post)
-    const { id,
-        // image,
-        title,
-        // description
-        } = post;
-    return (
-    <Link to={id}>
-        <Card>
-        <CardTitle>{title}</CardTitle>
-        <CardBody>
-        {/* Checks if post has an image. */}
-        {/* {image ? (
-            <>
-            <CardImg>{image}</CardImg>
-            <CardText>{description}</CardText>
-            </>
+  const { id, title } = post;
+  const description = getDescription(post);
+  const imageUrls = getImageUrl(post);
+
+  return (
+    <Link to={id} className="link-underline-light my-2">
+      <Card style={{}}>
+        {imageUrls ? (
+          <img alt={description} src={imageUrls} className="img-thumbnail" />
         ) : (
-           <CardText>{description}</CardText>
-        )}*/}
+          ""
+        )}
+        <CardTitle tag="h5">{title}</CardTitle>
+        <CardBody>
+          <CardText> {description}</CardText>
         </CardBody>
-        </Card>
+      </Card>
     </Link>
-    )
+  );
 };
 PostCard.propTypes = {
-    post: PropTypes.shape({
-        id: PropTypes.string,
-        image: PropTypes.string,
-        title: PropTypes.string,
-        description: PropTypes.string,
-    }).isRequired,
+  post: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    selftext: PropTypes.string,
+    post_hint: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 };
 
 export default PostCard;

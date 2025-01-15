@@ -1,7 +1,7 @@
 import { Button, Input, InputGroup } from "reactstrap";
 function SearchBar() {
   return (
-    <div>
+    <div className="container-fluid my-2">
       <InputGroup>
         <Input type="text" placeholder="Search" />
         <Button>
