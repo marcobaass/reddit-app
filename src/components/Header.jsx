@@ -1,8 +1,6 @@
+import NavBar from "./NavBar";
+
 function Header() {
-  return (
-    <>
-      <h1>Reddit App</h1>
-    </>
-  )
+  return <NavBar />;
 }
 export default Header;
