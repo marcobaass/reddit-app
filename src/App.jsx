@@ -1,12 +1,10 @@
-import './App.css'
-import Header from './components/Header';
-import PostList from './articles/PostList';
-import SearchBar from './components/SearchBar';
-import SubredditsList from './components/SubredditsList';
+import "./App.css";
+import Header from "./components/Header";
+import PostList from "./articles/PostList";
+import SearchBar from "./components/SearchBar";
+import SubredditsList from "./components/SubredditsList";
 
 function App() {
-
-
   return (
     <>
       <Header />
@@ -14,7 +12,7 @@ function App() {
       <PostList />
       <SubredditsList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
