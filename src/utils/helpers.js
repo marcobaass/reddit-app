@@ -1,8 +1,5 @@
-
 // post
 export const getImageUrl = (post) => {
-  console.log("post_hint", post.post_hint);
-  console.log("posturl ", post.url);
   if (post.post_hint === "image") {
     return post.url;
   } else if (
@@ -16,7 +13,6 @@ export const getImageUrl = (post) => {
     return null;
   }
 };
-
 
 export const getDescription = (post) => {
   let description;

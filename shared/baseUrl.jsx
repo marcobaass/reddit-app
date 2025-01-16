@@ -1,1 +1,1 @@
-export const baseUrl = 'https://api.reddit.com/';
+export const baseUrl = "https://www.reddit.com/";
