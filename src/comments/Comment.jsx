@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 /**
  * Recieves a Comment and display it
@@ -23,11 +23,11 @@ const Comment = () =>
     );
   };
 
-Comment.propTypes = {
-  comment: PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    author: PropTypes.string,
-  }).isRequired,
-};
+// Comment.propTypes = {
+//   comment: PropTypes.shape({
+//     text: PropTypes.string.isRequired,
+//     author: PropTypes.string,
+//   }).isRequired,
+// };
 
 export default Comment;
