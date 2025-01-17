@@ -21,7 +21,7 @@ const NavBar = () => {
       <Collapse isOpen={!collapsed} navbar>
         <Nav navbar>
           <NavItem>
-            <NavLink href="/articles">Articles</NavLink>
+            <NavLink href="/">Articles</NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="/subreddits">Subreddits</NavLink>

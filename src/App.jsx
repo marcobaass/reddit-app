@@ -1,16 +1,19 @@
 import "./App.css";
 import Header from "./components/header/Header";
-import PostList from "./features/articles/PostList";
 import SearchBar from "./components/searchBar/SearchBar";
-import SubredditsList from "./components/subredditList/SubredditList";
+import { Route, Routes } from "react-router-dom";
+import PostListPage from "./pages/ArticlesPage";
+import SubredditsPage from "./pages/SubredditsPage";
 
 function App() {
   return (
     <>
       <Header />
       <SearchBar />
-      <PostList />
-      <SubredditsList />
+      <Routes>
+        <Route path="/" element={<PostListPage />} />
+        <Route path="/subreddits" element={<SubredditsPage />} />
+      </Routes>
     </>
   );
 }
