@@ -6,7 +6,7 @@
 // import Content from "../subcomponents/ImageSection";
 import { Link } from "react-router-dom";
 import { Card, CardTitle, CardBody, CardText } from "reactstrap";
-import { getImageUrl, getDescription } from "../utils/helpers";
+import { getImageUrl, getDescription } from "../../utils/helpers";
 
 import PropTypes from "prop-types";
 

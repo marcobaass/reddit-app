@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { mapImageURL } from "../utils/mapImageURL";
-import { fetchPopularPosts } from "../api/api";
+import { mapImageURL } from "../../utils/mapImageURL";
+import { fetchPopularPosts } from "../../api/api";
 
 const initialState = {
   postArray: [],

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-import Article from "../components/Article";
+import Article from "../../components/article/Article";
 import CommentList from "../comments/CommentList";
-import Counter from "../subcomponents/Counter";
+import Counter from "../../subcomponents/Counter";
 import { Col, Container, Row } from "reactstrap";
 
 /**

@@ -1,8 +1,8 @@
 import "./App.css";
-import Header from "./components/Header";
-import PostList from "./articles/PostList";
-import SearchBar from "./components/SearchBar";
-import SubredditsList from "./components/SubredditsList";
+import Header from "./components/header/Header";
+import PostList from "./features/articles/PostList";
+import SearchBar from "./components/searchBar/SearchBar";
+import SubredditsList from "./components/subredditList/SubredditList";
 
 function App() {
   return (
