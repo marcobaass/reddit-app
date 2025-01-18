@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchComments } from "../api/api";
+import { fetchComments } from "../../api/api";
 
 const initialState = {
   commentsArray: [],
