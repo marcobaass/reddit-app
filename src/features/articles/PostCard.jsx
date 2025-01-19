@@ -19,7 +19,7 @@ const PostCard = ({ post }) => {
     <Container className="border my-2 py-4">
       <Row>
         <Col xs="auto" lg="2">
-          <Counter />
+          <Counter score={post.score} />
         </Col>
         <Col>
           <Article post={post} />
