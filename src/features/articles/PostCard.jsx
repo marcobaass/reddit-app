@@ -4,6 +4,7 @@ import Article from "../../components/article/Article";
 import CommentList from "../comments/CommentList";
 import Counter from "../../subcomponents/Counter";
 import { Col, Container, Row } from "reactstrap";
+import { useState } from "react";
 
 /**
  * PostCard  includes
@@ -15,14 +16,17 @@ import { Col, Container, Row } from "reactstrap";
  */
 const PostCard = ({ post }) => {
   // TODO Generate the comment list and pass it to CommentList component
+
+  const [currentPost, setCurrentPost] = useState(post);
+
   return (
     <Container className="border my-2 py-4">
       <Row>
         <Col xs="auto" lg="2">
-          <Counter score={post.score} />
+          <Counter score={currentPost.score} />
         </Col>
         <Col>
-          <Article post={post} />
+          <Article post={currentPost} />
         </Col>
       </Row>
       <CommentList />
