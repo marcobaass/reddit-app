@@ -53,7 +53,7 @@ function Counter({ score }) {
         direction="up"
         handleClick={onClickUp}
         color={color === "green" ? "green" : "black"}
-      />
+        />
       <h2 className="my-2" style={{ color: color }}>
         {votes >= 1000 ? `${Math.floor(votes / 1000)}K` : votes}
       </h2>
