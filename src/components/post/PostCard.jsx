@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-import Article from "../../components/article/Article";
-import CommentList from "../comments/CommentList";
+import Post from "./Post";
+import CommentList from "../../features/comments/CommentList";
 import Counter from "../../subcomponents/Counter";
 import { Col, Container, Row } from "reactstrap";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCommentsAsync } from "../comments/CommentSlice";
+import { fetchCommentsAsync } from "../../features/comments/CommentSlice";
 
 /**
  * PostCard  includes
@@ -19,8 +19,9 @@ import { fetchCommentsAsync } from "../comments/CommentSlice";
 const PostCard = ({ post }) => {
   // TODO Generate the comment list and pass it to CommentList component
   const dispatch = useDispatch();
-  const comments = useSelector((state) => state.comments.commentsByPost[post.id] || []);
-  const [currentPost, setCurrentPost] = useState(post);
+  const comments = useSelector(
+    (state) => state.comments.commentsByPost[post.id] || []
+  );
 
   useEffect(() => {
     dispatch(fetchCommentsAsync(post.id)); // Kommentare beim Laden der Komponente abrufen
@@ -30,10 +31,10 @@ const PostCard = ({ post }) => {
     <Container className="border my-2 py-4">
       <Row>
         <Col xs="auto" lg="2">
-          <Counter score={currentPost.score} />
+          <Counter score={post.score} />
         </Col>
         <Col>
-          <Article post={currentPost} />
+          <Post post={post} />
         </Col>
       </Row>
       <CommentList comments={comments} />
