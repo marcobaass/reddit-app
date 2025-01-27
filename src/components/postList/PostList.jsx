@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectAllPosts,
   fetchPopularPostsAsync,
-} from "../../features/posts/PostSlice";
+} from "../../features/posts/postSlice";
 import PostCard from "../post/PostCard";
 import { ListGroup } from "reactstrap";
 import { useEffect } from "react";
