@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllPosts } from "./PostSlice";
-import PostCard from "./PostCard";
+import {
+  selectAllPosts,
+  fetchPopularPostsAsync,
+} from "../../features/posts/postSlice";
+import PostCard from "../post/PostCard";
 import { ListGroup } from "reactstrap";
 import { useEffect } from "react";
-import { fetchPopularPostsAsync } from "./PostSlice";
 /**
  * Component used to displayed the list of post
  * @returns
@@ -16,6 +18,7 @@ const PostList = () => {
   useEffect(() => {
     dispatch(fetchPopularPostsAsync());
   }, [dispatch]);
+
   if (posts.length === 0) {
     return <p>No posts</p>;
   }

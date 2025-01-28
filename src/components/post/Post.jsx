@@ -10,7 +10,7 @@ import { getImageUrl, getDescription } from "../../utils/helpers";
 
 import PropTypes from "prop-types";
 
-function Article({ post }) {
+function Post({ post }) {
   const { id, title } = post;
   const description = getDescription(post);
   const imageUrls = getImageUrl(post);
@@ -36,7 +36,7 @@ function Article({ post }) {
   );
 }
 
-Article.propTypes = {
+Post.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
@@ -46,4 +46,4 @@ Article.propTypes = {
   }).isRequired,
 };
 
-export default Article;
+export default Post;

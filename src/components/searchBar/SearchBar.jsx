@@ -1,7 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setQuery, fetchSearchResults } from '../../redux/slices/searchSlice';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setQuery,
+  fetchSearchResults,
+} from "../../features/search/searchSlice";
 import { Button, Input, InputGroup } from "reactstrap";
-import SearchResults from '../searchResults/SearchResults';
+import SearchResults from "../searchResults/SearchResults";
 function SearchBar() {
   const dispatch = useDispatch();
   const query = useSelector((state) => state.search.query);
@@ -16,7 +19,7 @@ function SearchBar() {
   };
 
   const handleInputKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       dispatch(fetchSearchResults(query));
     }
   };
@@ -29,9 +32,9 @@ function SearchBar() {
           value={query}
           onChange={handleInputChange}
           onKeyDown={handleInputKeyDown}
-          placeholder="Search" />
-        <Button
-          onClick={handleSearch}>
+          placeholder="Search"
+        />
+        <Button onClick={handleSearch}>
           <i className="bi bi-search"></i>
         </Button>
       </InputGroup>
