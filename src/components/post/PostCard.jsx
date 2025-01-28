@@ -6,7 +6,7 @@ import Counter from "../../subcomponents/Counter";
 import { Col, Container, Row } from "reactstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCommentsAsync } from "../../features/comments/commentSlice";
+import { fetchCommentsAsync } from "../../features/comments/CommentSlice";
 
 /**
  * PostCard  includes
