@@ -4,7 +4,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchComments = createAsyncThunk(
   "comments/fetchComments",
   async (postId) => {
-    const response = await fetch(`https://www.reddit.com/comments/${postId}.json`);
+    const response = await fetch(`${baseUrl}comments/${postId}.json?limit=10`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -30,5 +30,20 @@ export const fetchPopularPosts = createAsyncThunk(
     }
     const data = await response.json();
     return data.data.children.map((post) => post.data);
+  }
+);
+
+export const fetchSubreddits = createAsyncThunk(
+  "subreddits/",
+  async (limit = 10) => {
+    const response = await fetch(
+      `${baseUrl}subreddits/popular.json?limit=${limit}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status ${response.status}`);
+    }
+    const data = await response.json();
+    console.log("fetch popular subreddits ", data);
+    return data.data.children.map((subreddit) => subreddit.data);
   }
 );
