@@ -21,10 +21,10 @@ export const fetchComments = createAsyncThunk(
   }
 );
 
-export const fetchPopularPosts = createAsyncThunk(
-  "post/fetchPopularPosts",
-  async (limit = 8) => {
-    const response = await fetch(`${baseUrl}r/popular/.json?limit=${limit}`);
+export const fetchPosts = createAsyncThunk(
+  "post/fetchPosts",
+  async (subreddit = "all") => {
+    const response = await fetch(`${baseUrl}r/${subreddit}/top.json`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -33,17 +33,13 @@ export const fetchPopularPosts = createAsyncThunk(
   }
 );
 
-export const fetchSubreddits = createAsyncThunk(
-  "subreddits/",
-  async (limit = 10) => {
-    const response = await fetch(
-      `${baseUrl}subreddits/popular.json?limit=${limit}`
+export const fetchSubreddits = createAsyncThunk("subreddits/", async () => {
+  const response = await fetch(`${baseUrl}subreddits/popular.json?`);
+  if (!response.ok) {
+    throw new Error(
+      `HTTP error fetching subreddits! status ${response.status}`
     );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status ${response.status}`);
-    }
-    const data = await response.json();
-    console.log("fetch popular subreddits ", data);
-    return data.data.children.map((subreddit) => subreddit.data);
   }
-);
+  const data = await response.json();
+  return data.data.children.map((subreddit) => subreddit.data);
+});

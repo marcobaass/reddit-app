@@ -13,7 +13,7 @@ const NavBar = () => {
   const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <Navbar color="faded" light container="lg">
+    <Navbar color="faded" light container="fluid lg p-0">
       <NavbarBrand href="/" className="m-auto fs-1 " tag="a">
         Reddit App
       </NavbarBrand>

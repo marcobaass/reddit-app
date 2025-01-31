@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectAllPosts,
-  fetchPopularPostsAsync,
+  fetchPostsAsync,
 } from "../../features/posts/postSlice";
 import PostCard from "../post/PostCard";
 import { ListGroup } from "reactstrap";
@@ -16,7 +16,7 @@ const PostList = () => {
   const posts = useSelector(selectAllPosts);
 
   useEffect(() => {
-    dispatch(fetchPopularPostsAsync());
+    dispatch(fetchPostsAsync());
   }, [dispatch]);
 
   if (posts.length === 0) {
