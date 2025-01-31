@@ -48,7 +48,7 @@ function SubredditsList() {
         Filter by Subreddits
         <i className="bi bi-filter"></i>
       </Button>
-      <ListGroup className="text-start">
+      <ListGroup id="subreddits" className="text-start">
         <Collapse isOpen={isOpen}>
           {subreddits.map((subreddit) => (
             <Subreddit

@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -51,4 +50,11 @@
 
 .down:hover {
   color: red;
+}
+
+/* Subredicts active */
+#subreddits li.active {
+  background-color: #dfdfe0;
+  border: #dfdfe0;
+  color: black
 }

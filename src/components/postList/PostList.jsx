@@ -17,7 +17,7 @@ const PostList = () => {
 
   useEffect(() => {
     dispatch(fetchPostsAsync());
-  }, [dispatch]);
+  }, []);
 
   if (posts.length === 0) {
     return <p>No posts</p>;

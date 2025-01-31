@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 
 import Post from "./Post";
 import CommentList from "../commentList/CommentList";
-import Counter from "../../subcomponents/Counter";
-import { Col, Container, Row } from "reactstrap";
+import { Container } from "reactstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCommentsAsync } from "../../features/comments/commentSlice";
@@ -29,14 +28,7 @@ const PostCard = ({ post }) => {
 
   return (
     <Container className="border my-2 py-4">
-      <Row>
-        <Col xs="auto" lg="2">
-          <Counter score={post.score} />
-        </Col>
-        <Col>
-          <Post post={post} />
-        </Col>
-      </Row>
+      <Post post={post} />
       <CommentList comments={comments} />
     </Container>
   );
