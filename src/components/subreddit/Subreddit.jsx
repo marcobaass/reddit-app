@@ -1,16 +1,15 @@
 import PropTypes from "prop-types";
 import { ListGroupItem } from "reactstrap";
-import { useState } from "react";
 
-function Subreddit({ subreddit }) {
-  const [isActive, setIsActive] = useState(false);
+function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
+  const handleClick = () => {
+    handleSubreddit(subreddit.display_name);
+  };
 
-  console.log(subreddit);
   return (
     <ListGroupItem
-      className={isActive ? "active" : ""}
-      onClick={() => setIsActive(!isActive)}
-      href="/"
+      className={selectedSubreddit === subreddit.display_name ? "active" : ""}
+      onClick={handleClick}
     >
       <img
         src={subreddit.icon_img}
@@ -23,7 +22,6 @@ function Subreddit({ subreddit }) {
           e.target.className += " placeholder opacity-75"; // Or remove src entirely
         }}
       ></img>
-
       {subreddit.display_name}
     </ListGroupItem>
   );
@@ -31,6 +29,8 @@ function Subreddit({ subreddit }) {
 
 Subreddit.propTypes = {
   subreddit: PropTypes.object.isRequired,
+  handleSubreddit: PropTypes.func.isRequired,
+  selectedSubreddit: PropTypes.string.isRequired,
 };
 
 export default Subreddit;

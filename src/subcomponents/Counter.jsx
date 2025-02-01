@@ -48,12 +48,12 @@ function Counter({ score }) {
   };
 
   return (
-    <Card color="light" outline>
+    <Card color="light" outline className="p-0">
       <CounterButton
         direction="up"
         handleClick={onClickUp}
         color={color === "green" ? "green" : "black"}
-        />
+      />
       <h2 className="my-2" style={{ color: color }}>
         {votes >= 1000 ? `${Math.floor(votes / 1000)}K` : votes}
       </h2>

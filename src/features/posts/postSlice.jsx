@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { mapImageURL } from "../../utils/mapImageURL";
-import { fetchPopularPosts } from "../../api/api";
+import { fetchPosts } from "../../api/api";
 
 const initialState = {
   postArray: [],
@@ -8,22 +8,22 @@ const initialState = {
   errMsg: "",
 };
 
-export const fetchPopularPostsAsync = fetchPopularPosts;
+export const fetchPostsAsync = fetchPosts;
 
 export const postSlice = createSlice({
   name: "posts",
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPopularPostsAsync.pending, (state) => {
+      .addCase(fetchPostsAsync.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchPopularPostsAsync.fulfilled, (state, action) => {
+      .addCase(fetchPostsAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.errMsg = "";
         state.postArray = mapImageURL(action.payload);
       })
-      .addCase(fetchPopularPostsAsync.rejected, (state, action) => {
+      .addCase(fetchPostsAsync.rejected, (state, action) => {
         state.isLoading = false;
         state.errMsg = action.error?.message || "Fetch failed";
       });

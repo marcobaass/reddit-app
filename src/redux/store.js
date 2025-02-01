@@ -6,7 +6,6 @@ import subredditsReducer from "../features/subreddits/subredditsSlice";
 
 const store = configureStore({
   reducer: {
-    // adding slice reducers here
     comments: commentsReducer,
     posts: postReducer,
     search: searchReducer,
