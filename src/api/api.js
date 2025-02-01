@@ -6,25 +6,21 @@ export const fetchComments = createAsyncThunk(
   async (postId) => {
     const response = await fetch(`${baseUrl}comments/${postId}.json?limit=10`);
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP error fetching comments: ${response.status}`);
     }
+
     const data = await response.json();
+    // Extract comments from the Reddit API response
+    const comments = data[1].data.children.map((child) => child.data);
 
-    const comments = data[1].data.children.map((comment) => ({
-      id: comment.data.id,
-      author: comment.data.author,
-      body: comment.data.body,
-      score: comment.data.score,
-    }));
-
-    return comments;
+    return { postId, comments }; // Return postId along with comments
   }
 );
 
 export const fetchPosts = createAsyncThunk(
   "post/fetchPosts",
   async (subreddit = "all") => {
-    const response = await fetch(`${baseUrl}r/${subreddit}/top.json`);
+    const response = await fetch(`${baseUrl}r/${subreddit}/top.json?limit=10`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

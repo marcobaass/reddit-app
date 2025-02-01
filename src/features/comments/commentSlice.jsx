@@ -2,30 +2,35 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchComments } from "../../api/api";
 
 const initialState = {
-  commentsByPost: {},
-  isLoading: true,
-  errMsg: "",
+  commentsByPostId: {},
 };
-
-export const fetchCommentsAsync = fetchComments;
 
 export const commentsSlice = createSlice({
   name: "comments",
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCommentsAsync.pending, (state) => {
-        state.isLoading = true;
+      .addCase(fetchComments.pending, (state, action) => {
+        state.commentsByPostId[action.meta.arg] = {
+          loading: true,
+          error: null,
+        };
       })
-      .addCase(fetchCommentsAsync.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.errMsg = "";
-        console.log("Fetched comments:", action.payload);
-        state.commentsByPost[action.meta.arg] = action.payload;
+      .addCase(fetchComments.fulfilled, (state, action) => {
+        const { postId, comments } = action.payload;
+        state.commentsByPostId[postId] = {
+          loading: false,
+          error: null,
+          comments: comments,
+        };
       })
-      .addCase(fetchCommentsAsync.rejected, (state, action) => {
-        state.isLoading = false;
-        state.errMsg = action.error ? action.error.message : "Fetch failed";
+      .addCase(fetchComments.rejected, (state, action) => {
+        const { postId, error } = action.payload;
+        state.commentsByPostId[postId] = {
+          loading: false,
+          error: error,
+          comments: [],
+        };
       });
   },
 });

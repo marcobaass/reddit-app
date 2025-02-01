@@ -3,7 +3,7 @@ import { mapImageURL } from "../../utils/mapImageURL";
 import { fetchPosts } from "../../api/api";
 
 const initialState = {
-  postArray: [],
+  posts: [],
   isLoading: true,
   errMsg: "",
 };
@@ -21,7 +21,7 @@ export const postSlice = createSlice({
       .addCase(fetchPostsAsync.fulfilled, (state, action) => {
         state.isLoading = false;
         state.errMsg = "";
-        state.postArray = mapImageURL(action.payload);
+        state.posts = mapImageURL(action.payload);
       })
       .addCase(fetchPostsAsync.rejected, (state, action) => {
         state.isLoading = false;
@@ -31,6 +31,7 @@ export const postSlice = createSlice({
 });
 
 export default postSlice.reducer;
+
 export const selectAllPosts = (state) => {
-  return state.posts.postArray;
+  return state.posts.posts;
 };
