@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchComments } from "../../api/api";
+import Comment from "../comment/Comment";
 
 import { Collapse, ListGroup } from "reactstrap";
 
@@ -54,15 +55,11 @@ const CommentList = ({ post }) => {
       </div>
       <Collapse isOpen={isOpen}>
         <ListGroup id="comments">
-          <p>is open</p>
           {loading ? (
             <p>Loading...</p>
           ) : (
             postComments.map((comment) => (
-              <li key={comment.id}>
-                <strong>{comment.author}</strong>: {comment.body} (
-                {comment.score} Score)
-              </li>
+              <Comment key={comment.id} comment={comment} />
             ))
           )}
         </ListGroup>
