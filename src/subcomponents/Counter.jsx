@@ -68,6 +68,7 @@ function Counter({ score }) {
 
 Counter.propTypes = {
   score: PropTypes.number.isRequired,
+  setScore: PropTypes.func,
 };
 
 export default Counter;

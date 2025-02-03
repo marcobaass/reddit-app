@@ -3,9 +3,6 @@ import PropTypes from "prop-types";
 import Post from "./Post";
 import CommentList from "../commentList/CommentList";
 import { Container } from "reactstrap";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCommentsAsync } from "../../features/comments/commentSlice";
 
 /**
  * PostCard  includes
@@ -16,20 +13,10 @@ import { fetchCommentsAsync } from "../../features/comments/commentSlice";
  * @returns
  */
 const PostCard = ({ post }) => {
-  // TODO Generate the comment list and pass it to CommentList component
-  const dispatch = useDispatch();
-  const comments = useSelector(
-    (state) => state.comments.commentsByPost[post.id] || []
-  );
-
-  useEffect(() => {
-    dispatch(fetchCommentsAsync(post.id)); // Kommentare beim Laden der Komponente abrufen
-  }, [dispatch, post.id]);
-
   return (
     <Container className="border my-2 py-4">
       <Post post={post} />
-      <CommentList comments={comments} />
+      <CommentList post={post} />
     </Container>
   );
 };

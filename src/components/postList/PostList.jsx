@@ -1,8 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectAllPosts,
-  fetchPostsAsync,
-} from "../../features/posts/postSlice";
+import { fetchPostsAsync } from "../../features/posts/postSlice";
 import PostCard from "../post/PostCard";
 import { ListGroup } from "reactstrap";
 import { useEffect } from "react";
@@ -13,20 +10,23 @@ import { useEffect } from "react";
 
 const PostList = () => {
   const dispatch = useDispatch();
-  const posts = useSelector(selectAllPosts);
+  const { posts, loading, error } = useSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(fetchPostsAsync());
   }, []);
 
-  if (posts.length === 0) {
-    return <p>No posts</p>;
+  if (loading) {
+    return <div>Loading ...</div>;
+  }
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   return (
     <ListGroup>
       {posts.map((post) => {
-        return <PostCard key={post.url} post={post} />;
+        return <PostCard key={post.id} post={post} />;
       })}
     </ListGroup>
   );
