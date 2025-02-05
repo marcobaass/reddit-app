@@ -6,7 +6,12 @@ const initialState = {
   status: "idle",
   error: "",
 };
-
+const all = {
+  id: 0,
+  url: "",
+  icon_img: "",
+  display_name: "all",
+};
 export const subredditsSlice = createSlice({
   name: "subreddits",
   initialState,
@@ -18,7 +23,7 @@ export const subredditsSlice = createSlice({
       })
       .addCase(fetchSubreddits.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.subreddits = action.payload;
+        state.subreddits = [all, ...action.payload];
       })
       .addCase(fetchSubreddits.rejected, (state, action) => {
         state.status = "failed";
