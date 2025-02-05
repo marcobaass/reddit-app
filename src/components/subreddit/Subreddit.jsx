@@ -10,6 +10,7 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
     <ListGroupItem
       className={selectedSubreddit === subreddit.display_name ? "active" : ""}
       onClick={handleClick}
+      data-bs-dismiss="offcanvas"
     >
       <img
         src={subreddit.icon_img}

@@ -25,21 +25,24 @@ function SearchBar() {
   };
 
   return (
-    <div className="col-10 col-lg-11 m-0 p-0">
-      <InputGroup className="w-100">
-        <Input
-          type="text"
-          value={query}
-          onChange={handleInputChange}
-          onKeyDown={handleInputKeyDown}
-          placeholder="Search"
-        />
-        <Button onClick={handleSearch} className="col-2">
-          <i className="bi bi-search"></i>
-        </Button>
-      </InputGroup>
+    <>
+      <div className="col-10 col-lg-11 m-0 p-0">
+        {/* <div> */}
+        <InputGroup className="w-100">
+          <Input
+            type="text"
+            value={query}
+            onChange={handleInputChange}
+            onKeyDown={handleInputKeyDown}
+            placeholder="Search"
+          />
+          <Button onClick={handleSearch} className="col-2">
+            <i className="bi bi-search"></i>
+          </Button>
+        </InputGroup>
+      </div>
       <SearchResults results={results} />
-    </div>
+    </>
   );
 }
 

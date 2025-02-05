@@ -24,7 +24,7 @@ const PostList = () => {
   }
 
   return (
-    <ListGroup>
+    <ListGroup className="mx-0 px-0 ">
       {posts.map((post) => {
         return <PostCard key={post.id} post={post} />;
       })}

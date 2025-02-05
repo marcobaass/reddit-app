@@ -1,4 +1,4 @@
-import { ListGroup, Collapse, Button } from "reactstrap";
+import { ListGroup } from "reactstrap";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,8 +9,7 @@ import { selectAllPosts } from "../../features/posts/postSlice";
 import Subreddit from "../subreddit/Subreddit";
 
 function SubredditsList() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedSubreddit, setSelectedSubreddit] = useState("");
+  const [selectedSubreddit, setSelectedSubreddit] = useState("all");
   const dispatch = useDispatch();
   const { subreddits, status, error } = useSelector(
     (state) => state.subreddits
@@ -32,36 +31,56 @@ function SubredditsList() {
 
   const handleSubreddit = (selected) => {
     setSelectedSubreddit(selected);
-    toggle();
   };
-
-  const toggle = () => setIsOpen(!isOpen);
 
   return (
     <>
-      <div className="col-2 col-lg-1 mx-0 pe-0 ps-1 ">
-        <Button onClick={toggle} className="me-0 w-100">
-          {/* Filter by Subreddits */}
+      <div className="col-2 col-lg-1 ms-1 pe-0 position-absolute end-0">
+        <button
+          className="btn btn-secondary w-100 me-0"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasSubreddits"
+          aria-controls="offcanvasSubreddits"
+        >
+          {/* Select Subreddits  */}
           <i className="bi bi-filter"></i>
-        </Button>
+        </button>
       </div>
-
-      <Collapse isOpen={isOpen} className="text-start mt-2">
-        <ListGroup id="subreddits">
-          {status === "loading" ? (
-            <p>Loading subreddits...</p>
-          ) : (
-            subreddits.map((subreddit) => (
-              <Subreddit
-                key={subreddit.id}
-                subreddit={subreddit}
-                handleSubreddit={handleSubreddit}
-                selectedSubreddit={selectedSubreddit}
-              />
-            ))
-          )}
-        </ListGroup>
-      </Collapse>
+      <div
+        className="offcanvas offcanvas-start"
+        tabIndex="-1"
+        id="offcanvasSubreddits"
+        aria-labelledby="subredditTitle"
+      >
+        <div className="offcanvas-header">
+          <h5 className="offcanvas-title" id="subredditTitle">
+            Subreddits
+          </h5>
+          <button
+            type="button"
+            className="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div className="offcanvas-body text-start">
+          <ListGroup id="subreddits">
+            {status === "loading" ? (
+              <p>Loading subreddits...</p>
+            ) : (
+              subreddits.map((subreddit) => (
+                <Subreddit
+                  key={subreddit.id}
+                  subreddit={subreddit}
+                  handleSubreddit={handleSubreddit}
+                  selectedSubreddit={selectedSubreddit}
+                />
+              ))
+            )}
+          </ListGroup>
+        </div>
+      </div>
     </>
   );
 }
