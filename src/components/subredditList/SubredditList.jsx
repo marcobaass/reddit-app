@@ -7,11 +7,10 @@ import { fetchSubreddits, fetchPosts } from "../../api/api";
 import { selectAllPosts } from "../../features/posts/postSlice";
 
 import Subreddit from "../subreddit/Subreddit";
-import PostCard from "../post/PostCard";
 
 function SubredditsList() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSubreddit, setSelectedSubreddit] = useState("Home");
+  const [selectedSubreddit, setSelectedSubreddit] = useState("");
   const dispatch = useDispatch();
   const { subreddits, status, error } = useSelector(
     (state) => state.subreddits
@@ -27,10 +26,6 @@ function SubredditsList() {
     dispatch(fetchPosts(selectedSubreddit));
   }, [dispatch, selectedSubreddit]);
 
-  if (status === "loading") {
-    return <div>Loading subreddits...</div>;
-  }
-
   if (status === "failed") {
     return <div>{error}</div>;
   }
@@ -44,27 +39,29 @@ function SubredditsList() {
 
   return (
     <>
-      <Button onClick={toggle} className="my-2 w-100">
-        Filter by Subreddits
-        <i className="bi bi-filter"></i>
-      </Button>
-      <ListGroup id="subreddits" className="text-start">
-        <Collapse isOpen={isOpen}>
-          {subreddits.map((subreddit) => (
-            <Subreddit
-              key={subreddit.id}
-              subreddit={subreddit}
-              handleSubreddit={handleSubreddit}
-              selectedSubreddit={selectedSubreddit}
-            />
-          ))}
-        </Collapse>
-      </ListGroup>
-      <ListGroup>
-        {posts.map((post) => (
-          <PostCard key={post.url} post={post} />
-        ))}
-      </ListGroup>
+      <div className="col-2 col-lg-1 mx-0 pe-0 ps-1 ">
+        <Button onClick={toggle} className="me-0 w-100">
+          {/* Filter by Subreddits */}
+          <i className="bi bi-filter"></i>
+        </Button>
+      </div>
+
+      <Collapse isOpen={isOpen} className="text-start mt-2">
+        <ListGroup id="subreddits">
+          {status === "loading" ? (
+            <p>Loading subreddits...</p>
+          ) : (
+            subreddits.map((subreddit) => (
+              <Subreddit
+                key={subreddit.id}
+                subreddit={subreddit}
+                handleSubreddit={handleSubreddit}
+                selectedSubreddit={selectedSubreddit}
+              />
+            ))
+          )}
+        </ListGroup>
+      </Collapse>
     </>
   );
 }

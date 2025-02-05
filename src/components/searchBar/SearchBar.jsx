@@ -25,8 +25,8 @@ function SearchBar() {
   };
 
   return (
-    <div className="my-2">
-      <InputGroup>
+    <div className="col-10 col-lg-11 m-0 p-0">
+      <InputGroup className="w-100">
         <Input
           type="text"
           value={query}
@@ -34,7 +34,7 @@ function SearchBar() {
           onKeyDown={handleInputKeyDown}
           placeholder="Search"
         />
-        <Button onClick={handleSearch}>
+        <Button onClick={handleSearch} className="col-2">
           <i className="bi bi-search"></i>
         </Button>
       </InputGroup>
