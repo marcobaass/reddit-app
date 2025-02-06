@@ -1,14 +1,18 @@
 import "./App.css";
 import Header from "./components/header/Header";
 import SearchBar from "./components/searchBar/SearchBar";
+import { Route, Routes } from "react-router-dom";
+import FullArticlePage from "./pages/FullArticlePage";
 import SubredditsList from "./components/subredditList/SubredditList";
 import PostList from "./components/postList/PostList";
-// import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Header />
+      <Routes>        
+        <Route path="/post/:postId" element={<FullArticlePage />} />
+      </Routes>
       <div className="position-relative m-0 p-0 row">
         <SearchBar />
         <SubredditsList />

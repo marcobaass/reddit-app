@@ -25,9 +25,22 @@ export const fetchPosts = createAsyncThunk(
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
+    console.log ('fetchPosts: ', data);
     return data.data.children.map((post) => post.data);
   }
 );
+
+export const fetchPostById = createAsyncThunk(
+  "post/fetchPostById",
+  async (postId) => {
+    const response = await fetch(`${baseUrl}comments/${postId}.json`);
+    if (!response.ok) {
+      throw new Error(`HTTP error fetching post: ${response.status}`);
+    }
+    const data = await response.json();
+    return data[0].data.children[0].data;
+  }
+)
 
 export const fetchSubreddits = createAsyncThunk("subreddits/", async () => {
   const response = await fetch(`${baseUrl}subreddits/popular.json?`);
