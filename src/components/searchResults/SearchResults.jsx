@@ -2,12 +2,11 @@ import PropTypes from "prop-types";
 import styles from "./SearchResults.module.css";
 
 function SearchResults({ results }) {
-  if (results.length === 0) {
-    return <div></div>;
-  }
-
   return (
-    <div className={styles["search-results"]}>
+    <div
+      className={styles["search-results"]}
+      style={results.length === 0 ? { display: "none" } : { display: "" }}
+    >
       {results.map((result, index) => (
         <div key={index} className={styles["result-item"]}>
           <h3>{result.title}</h3>
