@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { fetchPostById } from "../api/api";
 import styles from "./FullArticlePage.module.css";
 import { fetchComments } from "../api/api";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from 'react-icons/fa';
 
 const FullArticlePage = () => {
   const { postId } = useParams();
@@ -14,13 +16,10 @@ const FullArticlePage = () => {
     error: null,
     comments: [],
   })
-
+  const navigate = useNavigate();
   const [showComments, setShowComments] = useState(false);
-
   const { loading = false, error = null, comments = [] } = commentsState || {};
-
   const allPosts = useSelector((state) => state.posts.posts);
-
   const showCommentsHandler = () => {
     if (!showComments && comments.length === 0) {
       dispatch(fetchComments(postId));
@@ -28,10 +27,10 @@ const FullArticlePage = () => {
     setShowComments((prev) => !prev);
   }
 
-  console.log("All posts in Redux:", allPosts);
-  console.log("PostId from URL:", postId);  // 🆕 Debug: postId aus der URL
+  const handleBackClick = () => {
+    navigate(-1);
+  };
 
-  // 🆕 Debug: Vergleicht jede ID mit postId
   allPosts.forEach((p) => console.log(`Comparing: t3_${p.id} === ${postId}`));
 
   useEffect(() => {
@@ -41,12 +40,9 @@ const FullArticlePage = () => {
     }
   }, [dispatch, postId]);
 
-  // 🆕 Fallback-Test: Vergleich ohne "t3_"
   const post = allPosts.find(
     (p) => `t3_${p.id}` === postId || p.id === postId.replace("t3_", "")
   );
-
-  console.log("Post from Redux state:", post); // 🆕 Debug: Gefundener Post
 
   if (!post) {
     return <p>Post not found</p>;
@@ -84,7 +80,9 @@ const FullArticlePage = () => {
           )}
         </>
       )}
-
+      <button onClick={handleBackClick} className={styles.btnComments}>
+        <FaArrowLeft /> Back
+      </button>
     </div>
   );
 };
