@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { mapImageURL } from "../../utils/mapImageURL";
-import { fetchPosts } from "../../api/api";
+import { fetchPostById, fetchPosts } from "../../api/api";
 
 const initialState = {
   posts: [],
@@ -26,7 +26,16 @@ export const postSlice = createSlice({
       .addCase(fetchPostsAsync.rejected, (state, action) => {
         state.isLoading = false;
         state.errMsg = action.error?.message || "Fetch failed";
-      });
+      })
+      .addCase(fetchPostById.fulfilled, (state, action) => {
+        console.log("Fetched post data:", action.payload);
+        const existingPost = state.posts.find(
+          post => post.id === action.payload.id
+        );
+        if (!existingPost) {
+          state.posts.push(action.payload);
+        }
+      })
   },
 });
 

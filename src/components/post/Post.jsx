@@ -46,7 +46,11 @@ function Post({ post }) {
       <CardTitle tag="h5" className="my-2 ">
         {title}
       </CardTitle>
-      <Link to={id} className="link-underline-light my-2 text-end">
+      <Link
+        to={`/post/${post.id}`}
+        className="link-underline-light my-2 text-end"
+        onClick={() => console.log("Navigating to post:", post.id)}
+      >
         See full article
       </Link>
       <CardBody>

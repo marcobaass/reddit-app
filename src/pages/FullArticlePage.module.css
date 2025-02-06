@@ -1,0 +1,18 @@
+.fullArticleContainer {
+  display: grid;
+  justify-content: center;
+}
+
+.articleImage {
+  max-width: 60vw;
+  max-height: 60vh;
+  margin: 0 auto;
+}
+
+.btnComments {
+  display: inline-block;
+  max-width: fit-content;
+  margin: 1rem auto;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
