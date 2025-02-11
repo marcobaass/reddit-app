@@ -1,34 +1,31 @@
-/**
- *
- *  This will displayed the article information
- */
-
-// import Content from "../subcomponents/ImageSection";
 import { Link } from "react-router-dom";
 import { Card, CardTitle, CardBody, CardText, Row, Col } from "reactstrap";
 import { getImageUrl, getDescription } from "../../utils/helpers";
 import Counter from "../../subcomponents/Counter";
-import { useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setScore, selectPostById } from "../../features/posts/postSlice";
 import PropTypes from "prop-types";
 
 function Post({ post }) {
-  const { id, title } = post;
-  const description = getDescription(post);
-  const imageUrls = getImageUrl(post);
-  const [score, setScore] = useState(post.score);
+  const dispatch = useDispatch();
+  const postFromRedux = useSelector((state) => selectPostById(state, post.id));
+  const score = postFromRedux?.score ?? post.score; // Falls Redux-Score fehlt, nutze initialen Wert
+
+  const handleScoreChange = (newScore) => {
+    dispatch(setScore({ postId: post.id, newScore }));
+  };
 
   return (
     <Card color="light" outline className="p-0">
       <Row>
         <Col className="col-3">
-          <Counter score={score} />
+          <Counter postId={post.id} />
         </Col>
         <Col className="col-9">
-          {imageUrls ? (
+          {getImageUrl(post) ? (
             <img
-              alt={description}
-              src={imageUrls}
+              alt={getDescription(post)}
+              src={getImageUrl(post)}
               className="img-thumbnail"
               onError={(e) => {
                 e.target.onerror = null;
@@ -36,25 +33,18 @@ function Post({ post }) {
               }}
             />
           ) : (
-            <div
-              className="img-thumbnail placeholder opacity-50 container-sm"
-              style={{ height: "100%" }}
-            ></div>
+            <div className="img-thumbnail placeholder opacity-50 container-sm" style={{ height: "100%" }}></div>
           )}
         </Col>
       </Row>
-      <CardTitle tag="h5" className="my-2 ">
-        {title}
+      <CardTitle tag="h5" className="my-2">
+        {post.title}
       </CardTitle>
-      <Link
-        to={`/post/${post.id}`}
-        className="link-underline-light my-2 text-end"
-        onClick={() => console.log("Navigating to post:", post.id)}
-      >
+      <Link to={`/post/${post.id}`} className="link-underline-light my-2 text-end">
         See full article
       </Link>
       <CardBody>
-        <CardText>{description ? description : ""}</CardText>
+        <CardText>{getDescription(post)}</CardText>
       </CardBody>
     </Card>
   );

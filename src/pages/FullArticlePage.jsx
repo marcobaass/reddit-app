@@ -81,7 +81,9 @@ const FullArticlePage = () => {
                 <i class="bi bi-chat-left"></i>
             </button>
           </div>
-          <Counter />
+          <div className={styles.counter}>
+            <Counter postId={post.id} />
+          </div>
         </div>
       </div>
 

@@ -60,6 +60,10 @@
   align-items: center;
 }
 
+.counter {
+  margin-right: 2rem;
+}
+
 ul {
 margin: 0;
 padding: 0;
