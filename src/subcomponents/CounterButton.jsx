@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 const CounterButton = ({ handleClick, color, direction }) => {
   const caretClass = `bi bi-caret-${direction}-fill fs-4 up`;
   return (
-    <Button outline color="light">
+    <Button
+      outline color="light"
+      onClick={handleClick}
+    >
       <i
         className={caretClass}
-        onClick={handleClick}
         style={{ color: color }}
       ></i>
     </Button>
