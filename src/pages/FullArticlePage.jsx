@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { fetchPostById } from "../api/api";
 import styles from "./FullArticlePage.module.css";
 import { fetchComments } from "../api/api";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from 'react-icons/fa';
+import renderCommentWithLinks from '../utils/renderCommentWithLinks'
+import Counter from "../subcomponents/Counter";
 
 const FullArticlePage = () => {
   const { postId } = useParams();
@@ -14,13 +18,10 @@ const FullArticlePage = () => {
     error: null,
     comments: [],
   })
-
+  const navigate = useNavigate();
   const [showComments, setShowComments] = useState(false);
-
   const { loading = false, error = null, comments = [] } = commentsState || {};
-
   const allPosts = useSelector((state) => state.posts.posts);
-
   const showCommentsHandler = () => {
     if (!showComments && comments.length === 0) {
       dispatch(fetchComments(postId));
@@ -28,10 +29,10 @@ const FullArticlePage = () => {
     setShowComments((prev) => !prev);
   }
 
-  console.log("All posts in Redux:", allPosts);
-  console.log("PostId from URL:", postId);  // 🆕 Debug: postId aus der URL
+  const handleBackClick = () => {
+    navigate(-1);
+  };
 
-  // 🆕 Debug: Vergleicht jede ID mit postId
   allPosts.forEach((p) => console.log(`Comparing: t3_${p.id} === ${postId}`));
 
   useEffect(() => {
@@ -41,32 +42,49 @@ const FullArticlePage = () => {
     }
   }, [dispatch, postId]);
 
-  // 🆕 Fallback-Test: Vergleich ohne "t3_"
   const post = allPosts.find(
     (p) => `t3_${p.id}` === postId || p.id === postId.replace("t3_", "")
   );
-
-  console.log("Post from Redux state:", post); // 🆕 Debug: Gefundener Post
 
   if (!post) {
     return <p>Post not found</p>;
   }
 
   return (
-    <div className={styles.fullArticleContainer}>
-      <h1>{post.title}</h1>
-      <a href={`https://www.reddit.com/u/${post.author}`} target="_blank" rel="noreferrer">
-        <p>By {post.author}</p>
-      </a>
-      <a href={`https://www.reddit.com/${post.subreddit_name_prefixed}`} target="_blank" rel="noreferrer">
-        <p>{post.subreddit_name_prefixed}</p>
-      </a>
-      <p>👍{post.ups} 👎{post.downs}</p>
-      <img src={post.url} alt={post.title} className={styles.articleImage}/>
-      <a href={`https://www.reddit.com${post.permalink}`} target="_blank" rel="noreferrer">
-        View on Reddit
-      </a>
-      <button onClick={showCommentsHandler} className={styles.btnComments}>show comments</button>
+    <>
+      <div className={styles.fullArticleContainer}>
+        <button onClick={handleBackClick} className={styles.btnBack}>
+          <FaArrowLeft /> Back
+        </button>
+
+        <h1>{post.title}</h1>
+
+        <a href={`https://www.reddit.com${post.permalink}`} target="_blank" rel="noreferrer" className={styles.viewReddit}>
+          View on Reddit
+        </a>
+
+        <div className={styles.imageContainer}>
+          <img src={post.url} alt={post.title} className={styles.articleImage}/>
+        </div>
+
+        <div className={styles.fullArticleBottomContainer}>
+          <div className={styles.authorInfoContainer}>
+            <a href={`https://www.reddit.com/${post.subreddit_name_prefixed}`} target="_blank" rel="noreferrer"  className={styles.infoLinks}>
+              <p><strong>{post.subreddit_name_prefixed}</strong></p>
+            </a>
+            <a href={`https://www.reddit.com/u/${post.author}`} target="_blank" rel="noreferrer" className={styles.infoLinks}>
+              <p>By {post.author}</p>
+            </a>
+            <button
+              onClick={showCommentsHandler}
+              className={styles.btnComments}>
+                <i class="bi bi-chat-left"></i>
+            </button>
+          </div>
+          <Counter />
+        </div>
+      </div>
+
       {showComments && (
         <>
           {loading && <p>Loading comments...</p>}
@@ -75,7 +93,10 @@ const FullArticlePage = () => {
             <ul>
               {comments.map((comment) => (
                 <li key={comment.id}>
-                  <strong>{comment.author}</strong>: {comment.body}
+                  <div className={styles.commentsContainer}>
+                  <p className={styles.author}><i class="bi bi-chat-left-text"></i> {comment.author}</p>
+                  <p>{renderCommentWithLinks(comment.body)}</p>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -84,8 +105,7 @@ const FullArticlePage = () => {
           )}
         </>
       )}
-
-    </div>
+    </>
   );
 };
 

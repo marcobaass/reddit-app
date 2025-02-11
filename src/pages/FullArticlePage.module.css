@@ -1,18 +1,95 @@
 .fullArticleContainer {
   display: grid;
   justify-content: center;
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+  margin: 2rem;
+}
+
+.btnBack {
+  margin: 2rem auto 1rem 4rem;
+}
+
+.viewReddit {
+  text-align: right;
+  text-decoration: none;
+  margin: 0 4rem 2rem;
+}
+
+.imageContainer {
+  max-width: 100%;
+  height: auto;
+  margin: 0 2rem;
+  background-color: black;
+  border-radius: 2rem;
 }
 
 .articleImage {
-  max-width: 60vw;
-  max-height: 60vh;
+  box-sizing: border-box;
+  max-width: 100%;
   margin: 0 auto;
+  border-radius: 2rem;
 }
 
+.btnBack,
 .btnComments {
   display: inline-block;
   max-width: fit-content;
-  margin: 1rem auto;
+
   border-radius: 10px;
-  background-color: lightgrey;
+  background-color: var(--accent-color);
+}
+
+.btnComments {
+  margin: 2rem auto 2rem 0;
+}
+
+.authorInfoContainer {
+  display: grid;
+  margin-left: 4rem;
+}
+
+.infoLinks {
+  text-decoration: none;
+  color: black;
+}
+
+.fullArticleBottomContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+margin: 0;
+padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.commentsContainer {
+  padding: 0;
+  margin: 2rem 2rem;
+  background-color: var(--primary-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 100vw;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin: 0 4rem 1rem;
+  text-align: left;
+}
+
+p {
+  text-align: start;
+  margin: 0;
+}
+
+.author {
+  font-weight: bold;
 }
