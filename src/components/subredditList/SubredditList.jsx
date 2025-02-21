@@ -8,6 +8,8 @@ import { selectAllPosts } from "../../features/posts/postSlice";
 
 import Subreddit from "../subreddit/Subreddit";
 
+import styles from './SubredditList.module.css'
+
 function SubredditsList() {
   const [selectedSubreddit, setSelectedSubreddit] = useState("all");
   const dispatch = useDispatch();
@@ -35,16 +37,16 @@ function SubredditsList() {
 
   return (
     <>
-      <div className="col-2 col-lg-1 ms-1 pe-0 position-absolute end-0">
+      <div className="col-2 col-lg-1 ms-5 pe-0 end-0">
         <button
-          className="btn btn-secondary w-100 me-0"
+          className={styles.subBtn}
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasSubreddits"
           aria-controls="offcanvasSubreddits"
         >
           {/* Select Subreddits  */}
-          <i className="bi bi-filter"></i>
+          <i className="bi bi-filter">subreddits</i>
         </button>
       </div>
       <div
@@ -65,7 +67,7 @@ function SubredditsList() {
           ></button>
         </div>
         <div className="offcanvas-body text-start">
-          <ListGroup id="subreddits">
+          <ListGroup id="subreddits" className={styles.subredditList}>
             {status === "loading" ? (
               <p>Loading subreddits...</p>
             ) : (

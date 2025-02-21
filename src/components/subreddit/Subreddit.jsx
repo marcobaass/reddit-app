@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { ListGroupItem } from "reactstrap";
+import styles from "./Subreddit.module.css";
 
 function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
   const { display_name, icon_img } = subreddit;
@@ -9,7 +10,7 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
 
   return (
     <ListGroupItem
-      className={selectedSubreddit === display_name ? "active" : ""}
+      className={`${styles.subredditItem} ${selectedSubreddit === display_name ? "active" : ""}`}
       onClick={handleClick}
       data-bs-dismiss="offcanvas"
     >
@@ -25,17 +26,21 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
           <i className="bi bi-reddit"></i>
         </span>
       ) : (
-        <img
-          src={icon_img}
-          className="rounded-circle mx-2 bg-secondary"
-          alt={`${display_name} image`}
-          width="35"
-          height="35"
-          onError={(e) => {
-            e.target.onerror = null; // Prevent infinite loop if placeholder also fails
-            e.target.className += " placeholder opacity-75"; // Or remove src entirely
-          }}
-        ></img>
+        icon_img ? (
+          <img
+            src={icon_img}
+            className="rounded-circle mx-2 bg-secondary"
+            alt={`${display_name} image`}
+            width="35"
+            height="35"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.className += " placeholder opacity-75";
+            }}
+          />
+        ) : (
+          <span className="bi bi-reddit mx-2 opacity-50" style={{ fontSize: "2.25rem" }}></span>
+        )
       )}
       <span className="text-capitalize">{display_name}</span>
     </ListGroupItem>

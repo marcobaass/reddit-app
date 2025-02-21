@@ -1,0 +1,8 @@
+.subredditItem {
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.subredditItem:hover {
+  background-color: var(--accent-color); /* Light Reddit orange */
+}

@@ -1,7 +1,15 @@
-// import NavBar from "./NavBar";
+import SearchBar from "../searchBar/SearchBar";
+import styles from './Header.module.css';
 
 function Header() {
   // return <NavBar />;
-  return <h1 className="p-0 my-3 display-1">Reddit App</h1>;
+  return (
+    <div className={styles.headerContainer}>
+      <h1 className={styles.h1}>MyReddit</h1>
+      <div className={styles.searchBar}>
+        <SearchBar />
+      </div>
+    </div>
+  )
 }
 export default Header;

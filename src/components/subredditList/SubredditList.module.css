@@ -1,0 +1,10 @@
+.subredditList {
+  background-color: #f8f9fa; /* Light gray */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.subBtn {
+  background-color: var(--accent-color);
+  border-radius: 8px;
+}
