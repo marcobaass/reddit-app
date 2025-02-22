@@ -7,10 +7,12 @@ import { fetchSubreddits, fetchPosts } from "../../api/api";
 import { selectAllPosts } from "../../features/posts/postSlice";
 
 import Subreddit from "../subreddit/Subreddit";
+import { useNavigate } from "react-router-dom";
 
 import styles from './SubredditList.module.css'
 
 function SubredditsList() {
+  const navigate = useNavigate();
   const [selectedSubreddit, setSelectedSubreddit] = useState("all");
   const dispatch = useDispatch();
   const { subreddits, status, error } = useSelector(
@@ -33,6 +35,7 @@ function SubredditsList() {
 
   const handleSubreddit = (selected) => {
     setSelectedSubreddit(selected);
+    return navigate("/");
   };
 
   return (

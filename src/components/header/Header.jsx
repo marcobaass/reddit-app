@@ -1,6 +1,7 @@
 import SearchBar from "../searchBar/SearchBar";
 import styles from './Header.module.css';
 
+import { Link } from "react-router-dom";
 function Header() {
   // return <NavBar />;
   return (
@@ -11,5 +12,6 @@ function Header() {
       </div>
     </div>
   )
+
 }
 export default Header;
