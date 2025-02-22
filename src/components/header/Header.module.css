@@ -1,0 +1,16 @@
+.headerContainer {
+  display: grid;
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+  margin: 2rem;
+}
+
+h1 {
+  margin: 2rem 4rem;
+}
+
+.searchBar {
+  max-width: 35%;
+  justify-self: end;
+  margin: 2rem 3rem;
+}

@@ -11,7 +11,6 @@ import Counter from "../subcomponents/Counter";
 
 const FullArticlePage = () => {
   const { postId } = useParams();
-  console.log("PostId from URL:", postId);
   const dispatch = useDispatch();
   const commentsState = useSelector(
     (state) =>
@@ -36,11 +35,8 @@ const FullArticlePage = () => {
     navigate(-1);
   };
 
-  allPosts.forEach((p) => console.log(`Comparing: t3_${p.id} === ${postId}`));
-
   useEffect(() => {
     if (postId) {
-      console.log("Dispatching fetchPostById for postId:", postId);
       dispatch(fetchPostById(postId)); // Dispatch the fetch action to get the post by ID
     }
   }, [dispatch, postId]);
@@ -48,6 +44,8 @@ const FullArticlePage = () => {
   const post = allPosts.find(
     (p) => `t3_${p.id}` === postId || p.id === postId.replace("t3_", "")
   );
+
+  console.log(post)
 
   if (!post) {
     return <p>Post not found</p>;
@@ -57,7 +55,7 @@ const FullArticlePage = () => {
     <>
       <div className={styles.fullArticleContainer}>
         <button onClick={handleBackClick} className={styles.btnBack}>
-          <FaArrowLeft /> Back
+          <i class="bi bi-backspace-fill"></i>
         </button>
 
         <h1>{post.title}</h1>

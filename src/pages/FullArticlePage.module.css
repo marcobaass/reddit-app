@@ -8,7 +8,7 @@
 
 .btnBack {
   margin: 2rem auto 1rem 4rem;
-}
+  }
 
 .viewReddit {
   text-align: right;
@@ -35,9 +35,11 @@
 .btnComments {
   display: inline-block;
   max-width: fit-content;
-
+  color: var(--primary-color);
   border-radius: 10px;
   background-color: var(--accent-color);
+  font-size: 1.5rem;
+  padding: 8px 24px;
 }
 
 .btnComments {
@@ -87,11 +89,13 @@ li {
 h1 {
   margin: 0 4rem 1rem;
   text-align: left;
+  color: var(--font-clr);
 }
 
 p {
   text-align: start;
   margin: 0;
+  color: var(--font-clr);
 }
 
 .author {

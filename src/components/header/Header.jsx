@@ -1,17 +1,17 @@
-// import NavBar from "./NavBar";
+import SearchBar from "../searchBar/SearchBar";
+import styles from './Header.module.css';
 
 import { Link } from "react-router-dom";
 function Header() {
   // return <NavBar />;
   return (
-    <h1 className="p-0 my-3 display-1 text-center">
-      <Link
-        to="/"
-        className="link-underline link-underline-opacity-0 text-black "
-      >
-        Reddit App
-      </Link>
-    </h1>
-  );
+    <div className={styles.headerContainer}>
+      <h1 className={styles.h1}>MyReddit</h1>
+      <div className={styles.searchBar}>
+        <SearchBar />
+      </div>
+    </div>
+  )
+
 }
 export default Header;

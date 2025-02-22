@@ -5,6 +5,7 @@ import {
 } from "../../features/search/searchSlice";
 import { Button, Input, InputGroup } from "reactstrap";
 import SearchResults from "../searchResults/SearchResults";
+import styles from "../searchBar/SearchBar.module.css";
 function SearchBar() {
   const dispatch = useDispatch();
   const query = useSelector((state) => state.search.query);
@@ -26,7 +27,7 @@ function SearchBar() {
 
   return (
     <>
-      <div className="col-10 col-lg-11 m-0 p-0">
+      <div className={styles.SearchBarContainer}>
         {/* <div> */}
         <InputGroup className="w-100">
           <Input
@@ -36,7 +37,7 @@ function SearchBar() {
             onKeyDown={handleInputKeyDown}
             placeholder="Search"
           />
-          <Button onClick={handleSearch} className="col-2">
+          <Button onClick={handleSearch} className={styles.SearchBarBtn}>
             <i className="bi bi-search"></i>
           </Button>
         </InputGroup>

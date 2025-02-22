@@ -8,16 +8,18 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --primary-color: lightgrey;
-  --accent-color: grey;
+  --bg-clr: #a1a0dd;
+  --primary-color: #fffffa;
+  --secondary-color: #FFFDF9;
+  --accent-color: #b43ea1;
   }
+
 
 a {
   font-weight: 500;
@@ -36,6 +38,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
 
 h1 {
   font-size: 3.2em;

@@ -49,7 +49,6 @@ export const postSlice = createSlice({
         state.errMsg = action.error?.message || "Fetch failed";
       })
       .addCase(fetchPostById.fulfilled, (state, action) => {
-        console.log("Fetched post data:", action.payload);
         const existingPost = state.posts.find(post => post.id === action.payload.id);
         if (!existingPost) {
           state.posts.push({ ...action.payload, voteState: "neutral" });

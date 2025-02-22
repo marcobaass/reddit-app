@@ -22,10 +22,11 @@ export const fetchPosts = createAsyncThunk(
   async (subreddit = "all") => {
     const response = await fetch(`${baseUrl}r/${subreddit}/top.json?limit=10`);
     if (!response.ok) {
+      console.error(`HTTP error! Status: ${response.status}`);
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    console.log ('fetchPosts: ', data);
+
     return data.data.children.map((post) => post.data);
   }
 );
