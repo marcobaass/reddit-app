@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../utils/testUtils"; // Import custom render
 
 describe("Comment List", () => {
   //TODO write comment list tests

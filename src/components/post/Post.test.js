@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../utils/testUtils"; // Import custom render
 
 describe("Post", () => {
   // TODO write post tests
