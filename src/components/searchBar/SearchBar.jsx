@@ -42,7 +42,6 @@ function SearchBar() {
           </Button>
         </InputGroup>
       </div>
-      <SearchResults results={results} />
     </>
   );
 }

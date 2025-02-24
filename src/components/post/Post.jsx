@@ -5,6 +5,7 @@ import Counter from "../../subcomponents/Counter";
 import { useSelector, useDispatch } from "react-redux";
 import { setScore, selectPostById } from "../../features/posts/postSlice";
 import PropTypes from "prop-types";
+import { renderMedia } from "../../utils/renderMedia";
 
 function Post({ post }) {
   const dispatch = useDispatch();
@@ -22,19 +23,7 @@ function Post({ post }) {
           <Counter postId={post.id} />
         </Col>
         <Col className="col-9">
-          {getImageUrl(post) ? (
-            <img
-              alt={getDescription(post)}
-              src={getImageUrl(post)}
-              className="img-thumbnail"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.className += " placeholder opacity-75";
-              }}
-            />
-          ) : (
-            <div className="img-thumbnail placeholder opacity-50 container-sm" style={{ height: "100%" }}></div>
-          )}
+          {renderMedia(post)}
         </Col>
       </Row>
       <CardTitle tag="h5" className="my-2">
