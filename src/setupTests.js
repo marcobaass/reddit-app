@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 import { TextEncoder, TextDecoder } from "node:util";
-import "jest-dom/extend-expect";
 
 
 if (typeof global.TextEncoder === "undefined") {
