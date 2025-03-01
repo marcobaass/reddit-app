@@ -14,10 +14,11 @@ const config = {
   moduleDirectories: ["node_modules"],
   moduleNameMapper: {
     "\\.module\\.css$": "identity-obj-proxy",
-    "swiper/css": "swiper/swiper.min.css"
+    "swiper/css": "swiper/swiper.min.css",
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!(swiper|swiper/react)/)",
+    "/node_modules/(?!(swiper)/)",
   ],
 };
 
