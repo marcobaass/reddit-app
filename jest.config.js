@@ -4,7 +4,7 @@ const require = createRequire(import.meta.url);
 const config = {
   testEnvironment: "jsdom",
   transform: {
-    "^.+\\.jsx?$": "babel-jest",
+    '^.+\\.(ts|tsx|js)$': 'babel-jest',
     "^.+\\.css$": require.resolve("jest-transform-css"),
   },
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
@@ -17,9 +17,7 @@ const config = {
     "swiper/css": "swiper/swiper.min.css",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
-  transformIgnorePatterns: [
-    "/node_modules/(?!(swiper)/)",
-  ],
+  transformIgnorePatterns: ['/node_modules/(?!swiper|ssr-window|dom7)']
 };
 
 export default config;
