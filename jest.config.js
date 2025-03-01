@@ -14,9 +14,10 @@ const config = {
   moduleDirectories: ["node_modules"],
   moduleNameMapper: {
     "\\.module\\.css$": "identity-obj-proxy",
+    "swiper/css": "swiper/swiper.min.css"
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!(swiper|swiper/react)/)", // Allow Jest to transform Swiper
+    "/node_modules/(?!(swiper|swiper/react)/)",
   ],
 };
 
