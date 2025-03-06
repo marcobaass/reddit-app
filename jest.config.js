@@ -17,7 +17,8 @@ const config = {
     "swiper/css": "swiper/swiper.min.css",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
-  transformIgnorePatterns: ['/node_modules/(?!swiper|ssr-window|dom7)']
+  transformIgnorePatterns: ['/node_modules/(?!swiper|ssr-window|dom7)'],
+  extensionsToTreatAsEsm: [".jsx"],
 };
 
 export default config;
