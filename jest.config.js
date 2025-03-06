@@ -15,7 +15,7 @@ const config = {
   moduleDirectories: ["node_modules"],
   moduleNameMapper: {
     "\\.module\\.css$": "identity-obj-proxy",
-    "swiper/css": "swiper/swiper.min.css",
+    "swiper/css": "identity-obj-proxy",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
   transformIgnorePatterns: ['/node_modules/(?!swiper|ssr-window|dom7)'],
