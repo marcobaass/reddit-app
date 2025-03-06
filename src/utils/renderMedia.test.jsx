@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import RenderMedia from "./renderMedia";
+import { RenderMedia } from "./renderMedia";
 
 // Test to check if Swiper renders correctly
 test("renders Swiper component with slides", () => {
