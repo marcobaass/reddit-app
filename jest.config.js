@@ -4,7 +4,7 @@ const require = createRequire(import.meta.url);
 const config = {
   testEnvironment: "jsdom",
   transform: {
-    '^.+\\.(ts|tsx|js)$': 'babel-jest',
+    '^.+\\.[tj]sx?$': 'babel-jest',
     "^.+\\.css$": require.resolve("jest-transform-css"),
   },
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
