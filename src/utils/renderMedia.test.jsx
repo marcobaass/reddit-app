@@ -1,15 +1,19 @@
 import { render, screen } from "@testing-library/react";
-import { RenderMedia } from "./renderMedia";
+import { renderMedia } from "./renderMedia";
 
-// Test to check if Swiper renders correctly
 test("renders Swiper component with slides", () => {
-  render(<RenderMedia />);
+  const mockPost = {
+    media_metadata: {
+      img1: { s: { u: "https://example.com/image1.jpg" } },
+      img2: { s: { u: "https://example.com/image2.jpg" } },
+    },
+  };
 
-  // Check if Swiper exists in the DOM
+  render(renderMedia(mockPost));
+
   const swiper = screen.getByTestId("swiper-testid");
   expect(swiper).toBeInTheDocument();
 
-  // Check if at least one SwiperSlide exists
   const slides = screen.getAllByTestId("swiper-slide-testid");
   expect(slides.length).toBeGreaterThan(0);
 });

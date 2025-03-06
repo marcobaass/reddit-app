@@ -47,13 +47,14 @@ export const renderMedia = (post) => {
   if (imageUrls.length > 0) {
     return (
       <Swiper
+        data-testid="swiper-testid"
         modules={[Navigation, Pagination]}
         navigation
         pagination={{ clickable: true }}
         className={styles.imageContainer}
       >
         {imageUrls.map((imgUrl, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} data-testid="swiper-slide-testid">
             <img src={imgUrl} alt={`Gallery image ${index + 1}`} className={styles.articleImage} />
           </SwiperSlide>
         ))}
