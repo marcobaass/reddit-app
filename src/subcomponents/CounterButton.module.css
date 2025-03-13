@@ -1,0 +1,13 @@
+.counterButton {
+  background-color: var(--accent-color);
+  transition: scale 125ms;
+  display: flex;
+  justify-content: center;
+  padding: 0 8px;
+  margin: 0;
+}
+
+.counterButton:hover {
+  background-color: var(--accent-color);
+  scale: 0.95;
+}

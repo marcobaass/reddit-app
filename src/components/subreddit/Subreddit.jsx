@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { ListGroupItem } from "reactstrap";
 import styles from "./Subreddit.module.css";
 
 function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
@@ -9,19 +8,14 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
   };
 
   return (
-    <ListGroupItem
+    <ul
       className={`${styles.subredditItem} ${selectedSubreddit === display_name ? "active" : ""}`}
       onClick={handleClick}
       data-bs-dismiss="offcanvas"
     >
       {display_name === "all" ? (
         <span
-          className=" d-inline-flex align-items-center rounded-circle mx-2"
-          style={{
-            width: 35,
-            height: 35,
-            fontSize: "2.25rem",
-          }}
+          className={styles.logos}
         >
           <i className="bi bi-reddit"></i>
         </span>
@@ -29,7 +23,7 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
         icon_img ? (
           <img
             src={icon_img}
-            className="rounded-circle mx-2 bg-secondary"
+            className={styles.icons}
             alt={`${display_name} image`}
             width="35"
             height="35"
@@ -39,11 +33,15 @@ function Subreddit({ subreddit, handleSubreddit, selectedSubreddit }) {
             }}
           />
         ) : (
-          <span className="bi bi-reddit mx-2 opacity-50" style={{ fontSize: "2.25rem" }}></span>
+          <span
+            className={styles.logos}
+          >
+            <i className="bi bi-reddit"></i>
+          </span>
         )
       )}
-      <span className="text-capitalize">{display_name}</span>
-    </ListGroupItem>
+      <span className={`text-capitalize ${styles.text}`}>{display_name}</span>
+    </ul>
   );
 }
 

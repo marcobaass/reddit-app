@@ -1,11 +1,12 @@
 import { Button } from "reactstrap";
 import PropTypes from "prop-types";
+import styles from './CounterButton.module.css'
 const CounterButton = ({ handleClick, color, direction }) => {
   const caretClass = `bi bi-caret-${direction}-fill fs-4 up`;
   return (
     <Button
-      outline color="light"
       onClick={handleClick}
+      className={styles.counterButton}
     >
       <i
         className={caretClass}

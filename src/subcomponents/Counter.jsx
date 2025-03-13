@@ -1,9 +1,9 @@
-import { Card } from "reactstrap";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { setScore, setVoteState } from "../features/posts/postSlice";
 import CounterButton from "./CounterButton";
+import styles from'./Counter.module.css'
 
 function Counter({ postId }) {
   const dispatch = useDispatch();
@@ -62,13 +62,13 @@ function Counter({ postId }) {
   };
 
   return (
-    <Card color="light" outline className="p-0">
+    <div className={styles.counter}>
       <CounterButton
         direction="up"
         handleClick={onClickUp}
         color={voteState === "up" ? "green" : "black"}
       />
-      <h2 className="my-2" style={{ color: voteState === "up" ? "green" : voteState === "down" ? "red" : "black" }}>
+      <h2 style={{ color: voteState === "up" ? "green" : voteState === "down" ? "red" : "black" }}>
         {score >= 1000 ? `${Math.floor(score / 1000)}K` : score}
       </h2>
       <CounterButton
@@ -76,7 +76,7 @@ function Counter({ postId }) {
         handleClick={onClickDown}
         color={voteState === "down" ? "red" : "black"}
       />
-    </Card>
+    </div>
   );
 }
 

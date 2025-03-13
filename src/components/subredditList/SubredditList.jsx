@@ -40,7 +40,25 @@ function SubredditsList() {
 
   return (
     <>
-      <div className="col-2 col-lg-1 ms-5 pe-0 end-0">
+      <div className={styles.subredditSidebar}>
+        <ListGroup className={styles.subredditList}>
+          {status === "loading" ? (
+            <p>Loading subreddits...</p>
+          ) : (
+            subreddits.map((subreddit) => (
+              <Subreddit
+                key={subreddit.id}
+                subreddit={subreddit}
+                handleSubreddit={handleSubreddit}
+                selectedSubreddit={selectedSubreddit}
+              />
+            ))
+          )}
+        </ListGroup>
+      </div>
+
+
+      <div className="">
         <button
           className={styles.subBtn}
           type="button"

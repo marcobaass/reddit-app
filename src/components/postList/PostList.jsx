@@ -3,6 +3,7 @@ import { fetchPostsAsync } from "../../features/posts/postSlice";
 import PostCard from "../post/PostCard";
 import { ListGroup } from "reactstrap";
 import { useEffect } from "react";
+import styles from './PostList.module.css'
 /**
  * Component used to displayed the list of post
  * @returns
@@ -26,7 +27,7 @@ const PostList = () => {
   }
 
   return (
-    <ListGroup className="mx-0 px-0 ">
+    <ListGroup className={styles.postList}>
       {posts.map((post) => {
         return <PostCard key={post.id} post={post} />;
       })}

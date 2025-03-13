@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setScore, selectPostById } from "../../features/posts/postSlice";
 import PropTypes from "prop-types";
 import { renderMedia } from "../../utils/renderMedia";
+import CommentList from "../commentList/CommentList";
 
 function Post({ post }) {
   const dispatch = useDispatch();
@@ -17,24 +18,17 @@ function Post({ post }) {
   };
 
   return (
-    <Card color="light" outline className="p-0">
-      <Row>
-        <Col className="col-3">
-          <Counter postId={post.id} />
-        </Col>
-        <Col className="col-9">
-          {renderMedia(post)}
-        </Col>
-      </Row>
-      <CardTitle tag="h5" className="my-2">
+    <Card color="light" outline>
+      {renderMedia(post)}
+      <CardTitle tag="h5" className="my-4">
         {post.title}
       </CardTitle>
+      <Counter postId={post.id} />
       <Link to={`/post/${post.id}`} className="link-underline-light my-2 text-end">
         See full article
       </Link>
-      <CardBody>
-        <CardText>{getDescription(post)}</CardText>
-      </CardBody>
+      <CardText>{getDescription(post)}</CardText>
+      <CommentList post={post} />
     </Card>
   );
 }
