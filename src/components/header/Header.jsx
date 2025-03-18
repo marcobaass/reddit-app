@@ -1,6 +1,6 @@
 import SearchBar from "../searchBar/SearchBar";
 import styles from "./Header.module.css";
-import reddish from "../../assets/reddish.png"
+import reddish from "../../assets/reddish.png";
 
 import { Link } from "react-router-dom";
 function Header() {
@@ -17,7 +17,7 @@ function Header() {
       <div className={styles.searchBar}>
         <SearchBar />
       </div>
-      <img src={reddish} alt="" className={styles.reddish}/>
+      <img src={reddish} alt="Reddish Logo" className={styles.reddish}/>
     </div>
   );
 }
