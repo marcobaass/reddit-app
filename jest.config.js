@@ -17,6 +17,7 @@ const config = {
     "\\.module\\.css$": "identity-obj-proxy",
     "swiper/css": "identity-obj-proxy",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/src/__mocks__/fileMock.js",
   },
   transformIgnorePatterns: ['/node_modules/(?!swiper|ssr-window|dom7)'],
   extensionsToTreatAsEsm: [".jsx"],
