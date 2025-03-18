@@ -14,10 +14,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg-clr: #a1a0dd;
+  --bg-clr: var(--black);
   --primary-color: #fffffa;
   --secondary-color: #FFFDF9;
-  --accent-color: #b43ea1;
+  --accent-color: var(--reddish-light);
+
+  --reddish-light: #FE809E;
+  --reddish: #FE297E;
+  --reddish-dark: #AF014A;
+  --blue-light:#C8F0F5;
+  --blue:#82C2FC;
+  --blue-dark:#1488EC;
+  --light:#FDFAEB;
+  --green:#5CD232;
+  --black:#000000;
   }
 
 

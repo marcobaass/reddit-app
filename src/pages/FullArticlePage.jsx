@@ -57,52 +57,50 @@ const FullArticlePage = () => {
   return (
     <>
       <div className={styles.fullArticleContainer}>
-        <button onClick={handleBackClick} className={styles.btnBack}>
-          <i className="bi bi-backspace-fill"></i>
-        </button>
-
-        <h1>{post.title}</h1>
-
-        <a
-          href={`https://www.reddit.com${post.permalink}`}
-          target="_blank"
-          rel="noreferrer"
-          className={styles.viewReddit}
-        >
-          View on Reddit
-        </a>
-
-        {renderMedia(post)}
-
-        <div className={styles.fullArticleBottomContainer}>
-          <div className={styles.authorInfoContainer}>
-            <a
-              href={`https://www.reddit.com/${post.subreddit_name_prefixed}`}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.infoLinks}
-            >
-              <p>
-                <strong>{post.subreddit_name_prefixed}</strong>
-              </p>
-            </a>
-            <a
-              href={`https://www.reddit.com/u/${post.author}`}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.infoLinks}
-            >
-              <p>By {post.author}</p>
-            </a>
-            <button
-              onClick={showCommentsHandler}
-              className={styles.btnComments}
-            >
-              <i className="bi bi-chat-left"></i>
-            </button>
-          </div>
-          <div className={styles.counter}>
-            <Counter postId={post.id} />
+        <div className={styles.fullArticleContent}>
+          <button onClick={handleBackClick} className={styles.btnBack}>
+            <i className="bi bi-backspace-fill"></i>
+          </button>
+          <h1>{post.title}</h1>
+          <a
+            href={`https://www.reddit.com${post.permalink}`}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.viewReddit}
+          >
+            View on Reddit
+          </a>
+          {renderMedia(post)}
+          <div className={styles.fullArticleBottomContainer}>
+            <div className={styles.authorInfoContainer}>
+              <a
+                href={`https://www.reddit.com/${post.subreddit_name_prefixed}`}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.infoLinks}
+              >
+                <p>
+                  <strong>{post.subreddit_name_prefixed}</strong>
+                </p>
+              </a>
+              <a
+                href={`https://www.reddit.com/u/${post.author}`}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.infoLinks}
+              >
+                <p>By {post.author}</p>
+              </a>
+              <button
+                onClick={showCommentsHandler}
+                className={styles.btnComments}
+              >
+                <i className="bi bi-chat-left"></i>
+              </button>
+            </div>
+            <div className={styles.counter}>
+              <Counter postId={post.id} />
+            </div>
           </div>
         </div>
       </div>

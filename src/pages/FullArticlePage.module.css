@@ -1,13 +1,18 @@
 .fullArticleContainer {
   display: grid;
-  justify-content: center;
+  width: 100%;
+  align-content: center;
   background-color: var(--primary-color);
-  border-radius: 2rem;
-  margin: 2rem;
+  border-radius: 8px;
+}
+
+.fullArticleContent {
+  display: grid;
+  margin: 0 2rem;
 }
 
 .btnBack {
-  margin: 2rem auto 1rem 4rem;
+  align-self: center;
 }
 
 .viewReddit {
@@ -22,9 +27,9 @@
   max-width: fit-content;
   color: var(--primary-color);
   border-radius: 10px;
-  background-color: var(--accent-color);
+  background-color: var(--green);
   font-size: 1.5rem;
-  padding: 8px 24px;
+  padding: 4px 16px;
 }
 
 .btnComments {

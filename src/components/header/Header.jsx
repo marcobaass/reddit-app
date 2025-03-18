@@ -1,5 +1,6 @@
 import SearchBar from "../searchBar/SearchBar";
 import styles from "./Header.module.css";
+import reddish from "../../assets/reddish.png"
 
 import { Link } from "react-router-dom";
 function Header() {
@@ -10,12 +11,13 @@ function Header() {
           to="/"
           className="link-underline link-underline-opacity-0 text-black "
         >
-          MyReddit
+          reddish
         </Link>
       </h1>
       <div className={styles.searchBar}>
         <SearchBar />
       </div>
+      <img src={reddish} alt="" className={styles.reddish}/>
     </div>
   );
 }
