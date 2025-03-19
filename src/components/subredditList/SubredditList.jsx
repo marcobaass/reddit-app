@@ -67,7 +67,7 @@ function SubredditsList() {
           aria-controls="offcanvasSubreddits"
         >
           {/* Select Subreddits  */}
-          <i className="bi bi-filter">subreddits</i>
+          <i className="bi bi-filter"></i>
         </button>
       </div>
       <div

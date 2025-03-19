@@ -3,6 +3,7 @@
   position: sticky;
   min-width: fit-content;
   z-index: 0;
+  margin-left: 0.5rem;
 }
 
 
@@ -14,13 +15,18 @@
 }
 
 .subBtn {
-  background-color: var(--accent-color);
-  border-radius: 8px;
+  background-color: var(--green);
+  border-radius: 6px;
   display: none;
+  padding: 6px 12px;
+  margin-left: 0.6rem;
+  margin-top: 0.1rem;
 }
 
 @media only screen and (max-width: 600px) {
   .subBtn {
+    position: fixed;
+    z-index: 1;
     display: inline-block;
   }
   .subredditSidebar {
