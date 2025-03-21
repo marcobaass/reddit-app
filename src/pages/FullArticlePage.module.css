@@ -92,3 +92,40 @@ p {
 .author {
   font-weight: bold;
 }
+
+@media screen and (max-width: 600px) {
+  .main {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .fullArticleContainer {
+    margin: 0 0 0.5rem;
+  }
+
+  .fullArticleBottomContainer {
+    display: grid;
+    justify-content: center;
+  }
+
+  .authorInfoContainer {
+    display: grid;
+    margin: 0;
+    align-self: center;
+    order: 2;
+  }
+
+  .counter {
+    justify-self: space-between;
+    margin: 0.5rem 0;
+    order:1
+  }
+
+  .btnComments{
+    margin: 0.5rem 0;
+  }
+
+  .commentsContainer {
+    margin-left: 0;
+  }
+}
