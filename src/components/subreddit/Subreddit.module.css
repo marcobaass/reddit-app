@@ -7,7 +7,7 @@
   padding: 0 0.4rem
 }
 
-.subredditItem:nth-last-child {
+.subredditItem:last-child {
   border-bottom: none;
 }
 

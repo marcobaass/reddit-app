@@ -10,9 +10,6 @@ const Layout = () => {
         <SubredditsList />
         <Outlet />
       </main>
-      <footer>
-        <p>My App Footer</p>
-      </footer>
     </div>
   );
 };
